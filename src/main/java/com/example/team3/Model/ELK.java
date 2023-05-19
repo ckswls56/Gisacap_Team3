@@ -3,6 +3,8 @@ package com.example.team3.Model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @ToString
 @Getter
@@ -12,7 +14,7 @@ import lombok.*;
 public class ELK {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long elkTime;
+    private LocalDateTime elkTime;
 
     @Column(name = "tankId", nullable = false)
     private String tankId;
