@@ -1,8 +1,7 @@
 package com.example.team3.Model;
 
+import jakarta.persistence.*;
 import lombok.*;
-
-import javax.persistence.*;
 
 @Entity
 @ToString
@@ -10,7 +9,6 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "elk")
 public class ELK {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
