@@ -1,8 +1,8 @@
 package com.example.team3.Model;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 
 @Entity
 @ToString

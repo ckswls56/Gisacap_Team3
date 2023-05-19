@@ -1,8 +1,9 @@
 package com.example.team3.Model;
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @ToString
@@ -10,11 +11,10 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "elk")
 public class ELK {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long elkTime;
+    private LocalDateTime elkTime;
 
     @Column(name = "tankId", nullable = false)
     private String tankId;

@@ -1,8 +1,10 @@
 package com.example.team3.Model;
 
+import jakarta.persistence.*;
+import jdk.jfr.Timestamp;
 import lombok.*;
 
-import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @ToString
@@ -19,14 +21,14 @@ public class GPTParam {
     @Column(name = "userId", nullable = false)
     private String userId;
 
-    @Column(name = "elkTime", nullable = false)
-    private String elkTime;
+    @Column(name = "elkTime")
+    private LocalDateTime elkTime;
 
-    @Column(name = "historyId", nullable = false)
-    private String historyId;
+    @Column(name = "historyId")
+    private Long historyId;
 
-    @Column(name = "diseaseId", nullable = false)
-    private String diseaseId;
+    @Column(name = "diseaseId")
+    private Long diseaseId;
 
     @Column(name = "photoRef", nullable = false)
     private String photoRef;
