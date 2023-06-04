@@ -1,11 +1,10 @@
 package com.example.team3.controller;
 
 import java.io.File;
+import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import com.example.team3.Model.ELK;
 import com.example.team3.Model.GPTParam;
@@ -15,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,23 +31,22 @@ public class UploadController {
     private static final String CURR_IMAGE_REPO_PATH = "C:\\upload";
 
     @RequestMapping(value="/upload", method=RequestMethod.POST)
-    public ResponseEntity<String> upload(MultipartHttpServletRequest multipartRequest,
+    public String upload(MultipartHttpServletRequest multipartRequest,
                           GPTParam gptParam) throws Exception{
         multipartRequest.setCharacterEncoding("utf-8");
         LocalDateTime uploadTime = LocalDateTime.now();
         //image 저장 후 이름 리스트 반환
         String path = CURR_IMAGE_REPO_PATH+"\\"+gptParam.getUserId()+"\\"+uploadTime.toLocalDate()+"_"+uploadTime.getHour()+"_"+uploadTime.getMinute()+"_"+uploadTime.getSecond();
         List fileList = fileProcess(multipartRequest,path);
-
-        ELK closestELKObject = gptParamService.findClosestELKObject(); // 현재시간과 가장 가까운 ELK 정보를 가져옴 (uploadTime을 그냥 사용할까 LocalDateTime 형식을 몰겠슴
-
+        //ELK closestELKObject = gptParamService.findClosestELKObject(); // 현재시간과 가장 가까운 ELK 정보를 가져옴 (uploadTime을 그냥 사용할까 LocalDateTime 형식을 몰겠슴
+        //gptParam.setElkTime(closestELKObject.getElkTime());
         gptParam.setPhotoRef(path);
-        gptParam.setElkTime(closestELKObject.getElkTime());
+
 
         gptParamRepository.save(gptParam);
-
-
-        return new ResponseEntity<>(fileList.toString(), HttpStatus.OK);
+        String encodedFilePath = URLEncoder.encode(path+"\\"+fileList.get(0).toString(), "UTF-8");
+        System.out.println(encodedFilePath);
+        return "redirect:/result?filePath="+encodedFilePath;
     }
 
     private List<String> fileProcess(MultipartHttpServletRequest multipartRequest,
@@ -62,8 +62,6 @@ public class UploadController {
             String originalFileName = mFile.getOriginalFilename();
             fileList.add(originalFileName);
             if(mFile.getSize() != 0) {
-
-
                 mFile.transferTo(new File(dir.getPath() + "\\" + originalFileName));
             }
         }

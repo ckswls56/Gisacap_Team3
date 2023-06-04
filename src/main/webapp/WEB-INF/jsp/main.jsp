@@ -10,11 +10,12 @@
 <body>
     <div id="farmInputView">
         <h2>양식장 뷰(입력)</h2>
-        <form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" action="/upload">
             <div>
                 사진 업로드<br />
                 <img class="uploadedImg" src="../..//resources/images/noImage.jpg" /><br />
                 <input type="file" id="fishImg" name="fishImg" accept="image/*" onchange="loadFile(this)"/>
+                <input type="hidden" name="userId" value="skxkswls">
             </div><br />
             해당되는 증상을 모두 선택하세요.(CTRL 키를 누르고 클릭하여 중복 선택)<br />
             <select multiple id="symptom" name="symptom">
