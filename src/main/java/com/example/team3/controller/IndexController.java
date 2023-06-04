@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 
 @Controller
@@ -17,8 +18,8 @@ public class IndexController {
     }
     @GetMapping("/result")
     public String showResultPage(@RequestParam("filePath") String encodedFilePath, Model model) throws UnsupportedEncodingException {
-        String filePath = URLDecoder.decode(encodedFilePath, "UTF-8");
-        model.addAttribute("filePath", filePath);
+        String path = URLEncoder.encode(encodedFilePath,"UTF-8");
+        model.addAttribute("filePath",path);
         return "result";
     }
 

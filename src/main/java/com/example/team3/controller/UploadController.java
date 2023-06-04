@@ -28,7 +28,7 @@ public class UploadController {
     @Autowired
     GPTParamRepository gptParamRepository;
     GPTParamService gptParamService;
-    private static final String CURR_IMAGE_REPO_PATH = "C:\\upload";
+    private static final String CURR_IMAGE_REPO_PATH = "E:\\cap\\Team3\\src\\main\\webapp\\resources\\images";
 
     @RequestMapping(value="/upload", method=RequestMethod.POST)
     public String upload(MultipartHttpServletRequest multipartRequest,
@@ -44,7 +44,7 @@ public class UploadController {
 
 
         gptParamRepository.save(gptParam);
-        String encodedFilePath = URLEncoder.encode(path+"\\"+fileList.get(0).toString(), "UTF-8");
+        String encodedFilePath = URLEncoder.encode(gptParam.getUserId()+"\\"+uploadTime.toLocalDate()+"_"+uploadTime.getHour()+"_"+uploadTime.getMinute()+"_"+uploadTime.getSecond()+"\\"+fileList.get(0).toString(), "UTF-8");
         System.out.println(encodedFilePath);
         return "redirect:/result?filePath="+encodedFilePath;
     }
