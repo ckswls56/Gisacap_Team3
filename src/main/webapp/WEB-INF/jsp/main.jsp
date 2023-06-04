@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="path" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>양식 광어의 질병 감염 여부 판별 시스템</title>
-    <link href="../../resources/css/style.css" rel="stylesheet"/> 
+    <link href="../..//resources/css/style.css" rel="stylesheet"/>
 </head>
 <body>
     <div id="farmInputView">
@@ -14,7 +13,7 @@
         <form method="post" enctype="multipart/form-data">
             <div>
                 사진 업로드<br />
-                <img class="uploadedImg" src="../../resources/images/noImage.jpg" /><br />
+                <img class="uploadedImg" src="../..//resources/images/noImage.jpg" /><br />
                 <input type="file" id="fishImg" name="fishImg" accept="image/*" onchange="loadFile(this)"/>
             </div><br />
             해당되는 증상을 모두 선택하세요.(CTRL 키를 누르고 클릭하여 중복 선택)<br />
@@ -30,7 +29,7 @@
                 <option value="s8">백색의 반흔</option>
                 <option value="s9">복부 팽만</option>
                 <option value="s10">지느러미 결손</option>
-                <option value="s11">지느러미 충혈</option>                
+                <option value="s11">지느러미 충혈</option>
                 <option value="s12">지느러미 출혈</option>
                 <option value="s13">지느러미 가장자리의 백탁</option>
                 <option value="s14">머리의 충혈</option>
@@ -50,7 +49,7 @@
         <h2>전문가 뷰</h2>
         <div>
             양식장 사진<br />
-            <img class="uploadedImg" src="../../resources/images/noImage.jpg" /><br />
+            <img class="uploadedImg" src="../..//resources/images/noImage.jpg" /><br />
         </div><br />
         <div>
             <h3>ChatGPT의 의견</h3>
@@ -74,7 +73,7 @@
                 <option value="d8">에드워드병</option>
                 <option value="d9">활주세균증</option>
                 <option value="d10">백점충증</option>
-                <option value="d11">스쿠티카증</option>                
+                <option value="d11">스쿠티카증</option>
                 <option value="d12">트리코디나증</option>
             </select><br /><br />
             예방책 및 해결 방안<br /><textarea id="expertDiseaseSolution" name="expertDiseaseSolution" cols="50" rows="10" maxlength="2000"></textarea><br />
@@ -84,7 +83,7 @@
     <hr />
     <div id="farmOutputView">
         <h2>양식장 뷰(출력)</h2>
-        <img class="uploadedImg" src="../../resources/images/noImage.jpg" /><br />
+        <img class="uploadedImg" src="../..//resources/images/noImage.jpg" /><br />
         **ChatGPT가 제시한 의견에는 오류가 있을 수 있습니다.**<br /><br />
         작성자<br /><p id="author"></p>
         예상되는 병명<br /><p id="diseaseName" class="diseaseName"></p>

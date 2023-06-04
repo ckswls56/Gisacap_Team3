@@ -1,7 +1,8 @@
-package com.example.team3;
+package com.example.team3.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.Getmapping;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 @Controller
 public class IndexController {

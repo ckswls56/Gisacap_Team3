@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class ELK {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "elk_time", columnDefinition = "TIMESTAMP")
     private LocalDateTime elkTime;
 
     @Column(name = "tankId", nullable = false)
