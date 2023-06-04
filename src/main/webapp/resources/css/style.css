@@ -1,3 +1,25 @@
 .uploadedImg {
+    height: 450px;
+    width: 450px;
+}
 
+p#author {
+    height: 30px;
+    width: 150px;
+
+    border: 1px solid black;
+}
+
+p.diseaseName {
+    height: 30px;
+    width: 200px;
+
+    border: 1px solid black;
+}
+
+p.diseaseSolution {
+    height: 200px;
+    width: 600px;
+
+    border: 1px solid black;
 }
