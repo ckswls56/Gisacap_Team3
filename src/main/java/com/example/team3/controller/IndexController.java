@@ -29,7 +29,7 @@ public class IndexController {
     }
 
     @PostMapping("/expertInput")
-    public ResponseEntity<List<Map<String, Object>>> responseExpert(@RequestBody List<String> symtoms) {
+    public String responseExpert(@RequestBody List<String> symtoms, Model model) {
         List<Map<String, Object>> diseaseList = new ArrayList<>();
 
         HashMap<String, List<Integer>> symMap = new SolList().getSymList();
@@ -42,8 +42,6 @@ public class IndexController {
             disease.put("name",disMap.get("d0"));
             disease.put("sol", solMap.get("d0"));
             diseaseList.add(disease);
-
-            return ResponseEntity.ok(diseaseList);
         }
         else {
             int[] possiblility = new int[13];
@@ -71,8 +69,13 @@ public class IndexController {
                     diseaseList.add(disease);
                 }
             }
-
-            return ResponseEntity.ok(diseaseList);
         }
+
+        // Add diseaseList to the model
+        model.addAttribute("diseaseList", diseaseList);
+
+        // Return the view name
+        return "expertView";
     }
+
 }

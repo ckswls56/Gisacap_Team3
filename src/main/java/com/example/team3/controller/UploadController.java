@@ -28,11 +28,11 @@ public class UploadController {
     @Autowired
     GPTParamRepository gptParamRepository;
     GPTParamService gptParamService;
-    private static final String CURR_IMAGE_REPO_PATH = "E:\\cap\\Team3\\src\\main\\webapp\\resources\\images";
+    private static final String CURR_IMAGE_REPO_PATH = "D:\\gouyeonch\\a_univ\\3-1\\기업사회맞춤형캡스톤디자인1_한기용\\개발\\test\\src\\main\\webapp\\resources\\images";
 
     @RequestMapping(value="/upload", method=RequestMethod.POST)
     public String upload(MultipartHttpServletRequest multipartRequest,
-                          GPTParam gptParam) throws Exception{
+                         GPTParam gptParam) throws Exception{
         multipartRequest.setCharacterEncoding("utf-8");
         LocalDateTime uploadTime = LocalDateTime.now();
         //image 저장 후 이름 리스트 반환
