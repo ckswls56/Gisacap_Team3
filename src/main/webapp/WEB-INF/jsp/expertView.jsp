@@ -20,28 +20,28 @@
                 <img class="uploadedImg" src='..\..\resources\images\<%=request.getParameter("filePath")%>' alt="이미지" /><br />
             </div><br />
             <select multiple id="symptom" name="symptom">
-                <option value="s0" <%= containsValue(selectedOptions, "s0") ? "selected" : "" %>>무기력한 행동 및 거식</option>
-                <option value="s1" <%= containsValue(selectedOptions, "s1") ? "selected" : "" %>>입올림(떠오름)</option>
-                <option value="s2" <%= containsValue(selectedOptions, "s2") ? "selected" : "" %>>침하(가라앉음)</option>
-                <option value="s3" <%= containsValue(selectedOptions, "s3") ? "selected" : "" %>>빙빙 도는 등의 이상 행동</option>
-                <option value="s4" <%= containsValue(selectedOptions, "s4") ? "selected" : "" %>>지나치게 검은 체색</option>
-                <option value="s5" <%= containsValue(selectedOptions, "s5") ? "selected" : "" %>>과다한 점액 분비(또는 그로 인한 체표의 백탁)</option>
-                <option value="s6" <%= containsValue(selectedOptions, "s6") ? "selected" : "" %>>체표의 상처 또는 궤양</option>
-                <option value="s7" <%= containsValue(selectedOptions, "s7") ? "selected" : "" %>>등뼈 근처의 출혈</option>
-                <option value="s8" <%= containsValue(selectedOptions, "s8") ? "selected" : "" %>>백색의 반흔</option>
-                <option value="s9" <%= containsValue(selectedOptions, "s9") ? "selected" : "" %>>복부 팽만</option>
-                <option value="s10" <%= containsValue(selectedOptions, "s10") ? "selected" : "" %>>지느러미 결손</option>
-                <option value="s11" <%= containsValue(selectedOptions, "s11") ? "selected" : "" %>>지느러미 충혈</option>
-                <option value="s12" <%= containsValue(selectedOptions, "s12") ? "selected" : "" %>>지느러미 출혈</option>
-                <option value="s13" <%= containsValue(selectedOptions, "s13") ? "selected" : "" %>>지느러미 가장자리의 백탁</option>
-                <option value="s14" <%= containsValue(selectedOptions, "s14") ? "selected" : "" %>>머리의 충혈</option>
-                <option value="s15" <%= containsValue(selectedOptions, "s15") ? "selected" : "" %>>안구의 백탁, 충혈, 돌출</option>
-                <option value="s16" <%= containsValue(selectedOptions, "s16") ? "selected" : "" %>>안구 주변의 농양</option>
-                <option value="s17" <%= containsValue(selectedOptions, "s17") ? "selected" : "" %>>아가미의 충혈</option>
-                <option value="s18" <%= containsValue(selectedOptions, "s18") ? "selected" : "" %>>아가미의 괴사 및 출혈</option>
-                <option value="s19" <%= containsValue(selectedOptions, "s19") ? "selected" : "" %>>턱에서의 충혈</option>
-                <option value="s20" <%= containsValue(selectedOptions, "s20") ? "selected" : "" %>>항문의 확장과 출혈, 장의 돌출</option>
-                <option value="s21" <%= containsValue(selectedOptions, "s21") ? "selected" : "" %>>종양</option>
+                <option value="s0" <% if(containsValue(selectedOptions, "s0")){ %>selected<% } %>>무기력한 행동 및 거식</option>
+                <option value="s1" <% if(containsValue(selectedOptions, "s1")){ %>selected<% } %>>입올림(떠오름)</option>
+                <option value="s2" <% if(containsValue(selectedOptions, "s2")){ %>selected<% } %>>침하(가라앉음)</option>
+                <option value="s3" <% if(containsValue(selectedOptions, "s3")){ %>selected<% } %>>빙빙 도는 등의 이상 행동</option>
+                <option value="s4" <% if(containsValue(selectedOptions, "s4")){ %>selected<% } %>>지나치게 검은 체색</option>
+                <option value="s5" <% if(containsValue(selectedOptions, "s5")){ %>selected<% } %>>과다한 점액 분비(또는 그로 인한 체표의 백탁)</option>
+                <option value="s6" <% if(containsValue(selectedOptions, "s6")){ %>selected<% } %>>체표의 상처 또는 궤양</option>
+                <option value="s7" <% if(containsValue(selectedOptions, "s7")){ %>selected<% } %>>등뼈 근처의 출혈</option>
+                <option value="s8" <% if(containsValue(selectedOptions, "s8")){ %>selected<% } %>>백색의 반흔</option>
+                <option value="s9" <% if(containsValue(selectedOptions, "s9")){ %>selected<% } %>>복부 팽만</option>
+                <option value="s10" <% if(containsValue(selectedOptions, "s10")){ %>selected<% } %>>지느러미 결손</option>
+                <option value="s11" <% if(containsValue(selectedOptions, "s11")){ %>selected<% } %>>지느러미 충혈</option>
+                <option value="s12" <% if(containsValue(selectedOptions, "s12")){ %>selected<% } %>>지느러미 출혈</option>
+                <option value="s13" <% if(containsValue(selectedOptions, "s13")){ %>selected<% } %>>지느러미 가장자리의 백탁</option>
+                <option value="s14" <% if(containsValue(selectedOptions, "s14")){ %>selected<% } %>>머리의 충혈</option>
+                <option value="s15" <% if(containsValue(selectedOptions, "s15")){ %>selected<% } %>>안구의 백탁, 충혈, 돌출</option>
+                <option value="s16" <% if(containsValue(selectedOptions, "s16")){ %>selected<% } %>>안구 주변의 농양</option>
+                <option value="s17" <% if(containsValue(selectedOptions, "s17")){ %>selected<% } %>>아가미의 충혈</option>
+                <option value="s18" <% if(containsValue(selectedOptions, "s18")){ %>selected<% } %>>아가미의 괴사 및 출혈</option>
+                <option value="s19" <% if(containsValue(selectedOptions, "s19")){ %>selected<% } %>>턱에서의 충혈</option>
+                <option value="s20" <% if(containsValue(selectedOptions, "s20")){ %>selected<% } %>>항문의 확장과 출혈, 장의 돌출</option>
+                <option value="s21" <% if(containsValue(selectedOptions, "s21")){ %>selected<% } %>>종양</option>
             </select><br /><br />
         </form>
     </div>
