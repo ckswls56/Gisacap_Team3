@@ -78,4 +78,8 @@ public class IndexController {
         return "expertView";
     }
 
+    @PostMapping("/finalFarmView")
+    public String responseFinal() {
+        return "finalFarmView";
+    }
 }
