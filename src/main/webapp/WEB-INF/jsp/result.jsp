@@ -17,7 +17,7 @@
 
         xhr.open("POST", "/expertInput");
         xhr.setRequestHeader('Content-type', 'application/json');
-        xhr.send("<%=symptomString%>");
+        xhr.send('<%=symptomString%>');
 
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
