@@ -10,7 +10,7 @@
 <body>
     <div id="farmInputView">
         <h2>양식장 뷰(입력)</h2>
-        <form method="post" enctype="multipart/form-data" action="/upload">
+        <form id="farmForm" method="post" enctype="multipart/form-data" action="/upload">
             <div>
                 사진 업로드<br />
                 <img class="uploadedImg" src="../..//resources/images/noImage.jpg" /><br />
