@@ -1,20 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+    String[] selectedOptions = request.getParameterValues("symptom");
+    String filePath = request.getParameter("filePath");
+    String symptomsString = "";
+    if (selectedOptions != null && selectedOptions.length > 0) {
+        symptomsString = String.join("\",\"", selectedOptions);
+    }
 
+    String symptomString = "{[\"" + symptomsString + "\"]}";
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-</head>
-<body>
-    <%
-        String[] selectedOptions = request.getParameterValues("symptom");
-
-        String symptomsString = "";
-        if (selectedOptions != null && selectedOptions.length > 0) {
-            symptomsString = String.join("\",\"", selectedOptions);
-        }
-
-        String symptomString = "{[\"" + symptomsString + "\"]}";
-    %>
     <script>
         const xhr = new XMLHttpRequest();
 
@@ -44,8 +41,11 @@
             }
         };
     </script>
-    <%
-        response.sendRedirect("expertView.jsp");
-    %>
+</head>
+<body>
+
+
 </body>
+<%=filePath%>
+<%=symptomString%>
 </html>

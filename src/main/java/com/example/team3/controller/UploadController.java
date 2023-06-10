@@ -15,10 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -28,11 +25,12 @@ public class UploadController {
     @Autowired
     GPTParamRepository gptParamRepository;
     GPTParamService gptParamService;
-    private static final String CURR_IMAGE_REPO_PATH = "D:\\gouyeonch\\a_univ\\3-1\\기업사회맞춤형캡스톤디자인1_한기용\\개발\\test\\src\\main\\webapp\\resources\\images";
+    private static final String CURR_IMAGE_REPO_PATH = "E:\\cap\\Team3\\src\\main\\webapp\\resources\\images";
 
     @RequestMapping(value="/upload", method=RequestMethod.POST)
     public String upload(MultipartHttpServletRequest multipartRequest,
-                         GPTParam gptParam) throws Exception{
+                         @RequestParam("symptom") List<String> symptoms,
+                          GPTParam gptParam) throws Exception{
         multipartRequest.setCharacterEncoding("utf-8");
         LocalDateTime uploadTime = LocalDateTime.now();
         //image 저장 후 이름 리스트 반환
@@ -42,11 +40,14 @@ public class UploadController {
         //gptParam.setElkTime(closestELKObject.getElkTime());
         gptParam.setPhotoRef(path);
 
-
         gptParamRepository.save(gptParam);
         String encodedFilePath = URLEncoder.encode(gptParam.getUserId()+"\\"+uploadTime.toLocalDate()+"_"+uploadTime.getHour()+"_"+uploadTime.getMinute()+"_"+uploadTime.getSecond()+"\\"+fileList.get(0).toString(), "UTF-8");
         System.out.println(encodedFilePath);
-        return "redirect:/result?filePath="+encodedFilePath;
+        String symptomParam = String.join(",", symptoms);  // 증상 리스트를 쉼표로 연결하여 하나의 문자열로 만듭니다.
+        symptomParam = URLEncoder.encode(symptomParam, "UTF-8");  // URL에 안전하게 추가할 수 있도록 인코딩합니다.
+
+        System.out.println(encodedFilePath);
+        return "redirect:/result?filePath="+encodedFilePath+"&symptom="+symptomParam;
     }
 
     private List<String> fileProcess(MultipartHttpServletRequest multipartRequest,

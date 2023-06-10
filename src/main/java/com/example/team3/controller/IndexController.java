@@ -22,11 +22,18 @@ public class IndexController {
         return "main";
     }
     @GetMapping("/result")
-    public String showResultPage(@RequestParam("filePath") String encodedFilePath, Model model) throws UnsupportedEncodingException {
+    public String showResultPage(@RequestParam("filePath") String encodedFilePath,
+                                 @RequestParam("symptom") String symptomString, Model model) throws UnsupportedEncodingException {
         String path = URLEncoder.encode(encodedFilePath,"UTF-8");
         model.addAttribute("filePath",path);
+        System.out.println(symptomString);
+        List<String> symptoms = Arrays.asList(symptomString.split(","));  // symptoms 문자열을 쉼표로 분리하여 리스트로 변환합니다.
+        System.out.println(symptoms);
+        model.addAttribute("symptom", symptoms);  // symptoms 리스트를 모델에 추가합니다.
+
         return "result";
     }
+
 
     @PostMapping("/expertInput")
     public String responseExpert(@RequestBody List<String> symtoms, Model model) {
@@ -73,7 +80,7 @@ public class IndexController {
 
         // Add diseaseList to the model
         model.addAttribute("diseaseList", diseaseList);
-
+        System.out.println("expertView");
         // Return the view name
         return "expertView";
     }
